@@ -31,6 +31,25 @@ public class SearchCustomerFrm extends javax.swing.JFrame {
         this.user = user;
         mainFrm = this;
         listCustomer = new ArrayList<Customer>();
+        CustomerDAO cd = new CustomerDAO();
+        listCustomer = cd.searchCustomer("");
+
+        String[] columnNames = {"No.", "Name", "Phone"};
+        String[][] value = new String[listCustomer.size()][3];
+        for (int i = 0; i < listCustomer.size(); i++) {
+            value[i][0] = listCustomer.get(i).getId() + "";
+            value[i][1] = listCustomer.get(i).getName();
+            value[i][2] = listCustomer.get(i).getPhone();
+            System.out.println(listCustomer.get(i));
+        }
+        DefaultTableModel tableModel = new DefaultTableModel(value, columnNames) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //unable to edit cells
+                return false;
+            }
+        };
+        jTable1.setModel(tableModel);
     }
 
     /**
@@ -134,7 +153,7 @@ public class SearchCustomerFrm extends javax.swing.JFrame {
         int row = evt.getY() / jTable1.getRowHeight();
 
         if (row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0) {
-
+            (new BookingListFrm(user, listCustomer.get(row))).setVisible(true);
             mainFrm.dispose();
         }
     }//GEN-LAST:event_jTable1MouseClicked
@@ -142,7 +161,7 @@ public class SearchCustomerFrm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JButton btnClicked = (JButton) evt.getSource();
         if (btnClicked.equals(jButton1)) {
-           
+
             CustomerDAO cd = new CustomerDAO();
             listCustomer = cd.searchCustomer(jTextField1.getText().trim());
 

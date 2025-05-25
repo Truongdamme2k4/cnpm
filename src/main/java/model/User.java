@@ -5,6 +5,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,25 +18,29 @@ public class User implements Serializable {
     private String password;
     private String role;
     private Float salary;
+    private ArrayList<BookingForm> bookingForms;
+    private ArrayList<Invoice> invoices;
 
-    public User(int id, String name, String username, String password, String role, Float salary) {
+    public User() {
+        super();
+    }
+
+    public User(int id, String name, String username, String password, String role, Float salary, ArrayList<BookingForm> bookingForms, ArrayList<Invoice> invoices) {
         super();
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
         this.role = role;
-        this.salary=salary;
-    }
-
-    public User() {
-        super();
+        this.salary = salary;
+        this.bookingForms = bookingForms;
+        this.invoices = invoices;
     }
 
     public int getId() {
         return id;
     }
- 
+
     public String getName() {
         return name;
     }
@@ -54,6 +59,14 @@ public class User implements Serializable {
 
     public Float getSalary() {
         return salary;
+    }
+
+    public ArrayList<BookingForm> getBookingForms() {
+        return bookingForms;
+    }
+
+    public ArrayList<Invoice> getInvoices() {
+        return invoices;
     }
 
     public void setId(int id) {
@@ -79,9 +92,20 @@ public class User implements Serializable {
     public void setSalary(Float salary) {
         this.salary = salary;
     }
-    
 
-    
+    public void setBookingForms(ArrayList<BookingForm> bookingForms) {
+        this.bookingForms = bookingForms;
+    }
+
+    public void setInvoices(ArrayList<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", role=" + role + ", salary=" + salary + ", bookingForms=" + bookingForms + ", invoices=" + invoices + '}';
+    }
+
     
     
 }

@@ -5,6 +5,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,16 +15,18 @@ public class Customer implements Serializable{
     private int id;
     private String name;
     private String phone;
+    private ArrayList<BookingForm> bookingForms;
 
-    public Customer(int id, String name, String phone) {
+    public Customer() {
+        super();
+    }
+
+    public Customer(int id, String name, String phone, ArrayList<BookingForm> bookingForms) {
         super();
         this.id = id;
         this.name = name;
         this.phone = phone;
-    }
-
-    public Customer() {
-        super();
+        this.bookingForms = bookingForms;
     }
 
     public int getId() {
@@ -38,6 +41,10 @@ public class Customer implements Serializable{
         return phone;
     }
 
+    public ArrayList<BookingForm> getBookingForms() {
+        return bookingForms;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -50,10 +57,15 @@ public class Customer implements Serializable{
         this.phone = phone;
     }
 
+    public void setBookingForms(ArrayList<BookingForm> bookingForms) {
+        this.bookingForms = bookingForms;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", phone=" + phone + '}';
+        return "Customer{" + "id=" + id + ", name=" + name + ", phone=" + phone + ", bookingForms=" + bookingForms + '}';
     }
+ 
     
     
 }

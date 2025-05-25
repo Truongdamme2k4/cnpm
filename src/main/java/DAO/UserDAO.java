@@ -12,7 +12,6 @@ public class UserDAO extends DAO {
     }
 
     public boolean checkLogin(User user) {
-        System.out.println("checkLogin START");
         boolean result = false;
         String sql = "SELECT name, role FROM tbluser WHERE username = ? AND password = ?";
         try {
@@ -30,7 +29,6 @@ public class UserDAO extends DAO {
             e.printStackTrace();
         }
 
-        System.out.println("checkLogin " + result);
         return result;
     }
 }
