@@ -6,6 +6,8 @@ package view;
 
 import model.User;
 
+
+
 /**
  *
  * @author TRUONG DEP ZAI
@@ -17,6 +19,7 @@ public class ReceptionistHomeFrm extends javax.swing.JFrame {
      */
     public ReceptionistHomeFrm(User user) {
     initComponents();
+    setLocationRelativeTo(null);
     this.user = user;
     jLabel2.setText(user.getName()); 
 }

@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -52,11 +52,10 @@ public class CustomerDAO extends DAO {
                 + "FROM tblBookingForm bf\n"
                 + "JOIN tblBookingDetail bd ON bf.id = bd.idBookingForm\n"
                 + "JOIN tblTennisCourt tc ON bd.idTennisCourt = tc.id\n"
-                + "WHERE bf.idCustomer = ?";
+                + "WHERE bf.idCustomer = ? and bd.status=0" ;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, customer.getId()+"");
-            System.out.println(ps);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 BookingResponse br = new BookingResponse();
